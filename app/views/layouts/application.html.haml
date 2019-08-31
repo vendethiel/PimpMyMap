@@ -1,0 +1,24 @@
+!!! html5
+%html
+  %head
+    %meta(charset="utf-8")
+    %title Mon Titre
+    = stylesheet_link_tag "application", media: "all"
+    = csrf_meta_tag
+    = csp_meta_tag
+  %body
+    .d-flex.flex-column.flex-md-row.align-items-center.p-3.px-md-4.mb-3.bg-white.border-bottom.shadow-sm
+      %h5.my-0.mr-md-auto.font-weight-normal PimpMyMaps
+      %nav.my-2.my-md-0.mr-md-3
+        %a.p-2.text-dark(href="#") List of maps
+        %a.p-2.text-dark(href="#") List of maps
+        %a.p-2.text-dark(href="#") List of maps
+        %a.p-2.text-dark(href="#") List of maps
+      - if current_user.present?
+        %a.btn.btn-outline-primary(href="#") Logout
+      - else
+        %a.btn.btn-outline-primary(href="#") Log in
+    = yield
+    %footer.pt-4.my-md-5.pt-md-5.border-top
+    = #javascript_include_tag "application"
+

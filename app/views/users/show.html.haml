@@ -1,0 +1,9 @@
+%h1= @user.display_name
+
+- if @user.maps.size > 0
+  %b Released maps: #{@user.maps.size}
+  %ul
+    - @user.maps.each do |map|
+      %li
+        = map.thumbnail
+        %h3= link_to map.name, map

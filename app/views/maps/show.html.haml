@@ -1,0 +1,23 @@
+%p#notice= notice
+
+%h1= @map.name
+
+- if @map.image?
+  = image_tag(@map.image_url)
+
+%p= @map.description
+
+%b Author: #{@map.author_name}
+%br
+%b Latest version: #{@map.latest}
+%br
+%b Size: #{@map.size}
+%br
+%b Mode: #{@map.mode}
+%br
+%b Category: #{@map.category}
+
+
+= link_to 'Edit', edit_map_path(@map)
+\|
+= link_to 'Back', maps_path

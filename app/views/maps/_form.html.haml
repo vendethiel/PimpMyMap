@@ -1,0 +1,10 @@
+= simple_form_for @map do |f|
+  = f.error_notification
+
+  = f.input :name
+  = f.input :description, as: :text
+  = f.input :size, collection: ['16x16', '32x32']
+  = f.input :mode, collection: ['1v1', '2v2', '3v3', '4v4']
+  = f.input :category, collection: ['Micro', 'Macro']
+  = f.input :image, as: :file
+  = f.submit 'Save'

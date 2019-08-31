@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyString
+  user: one
+  size: MyString
+  latest: 2019-08-26
+  mode: 
+  category: 
+
+two:
+  name: MyString
+  description: MyString
+  user: two
+  size: MyString
+  latest: 2019-08-26
+  mode: 
+  category: 

@@ -1,0 +1,22 @@
+.px-3.py-3.pt-md-5.pb-md-4.mx-auto.text-center
+  %h3.display-4 List of Maps
+  %p.lead 
+    %span.badge.badge-secondary 137
+    maps in total
+
+%span.text-muted
+  List of Maps
+  %spanjustify-content-between.lh-condensed 137 
+%h5= link_to 'New Map', new_map_path
+
+- @maps.each do |map|
+  %h3.my-0= link_to map.name, map
+  %small.text-muted= map.description
+  = map.thumbnail
+  .text-muted Size: #{map.size}
+  .text-muted Mode: #{map.mode}
+  .text-muted Last updated: #{map.latest}
+  .text-muted Author: #{map.user.try(:name)}
+  .text-muted Category: #{map.category}
+  - if can? :manage, map
+    .text-muted= link_to 'Edit', map
