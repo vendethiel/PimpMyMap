@@ -18,6 +18,11 @@
 %b Category: #{@map.category}
 
 
+- if user_signed_in?
+  = render partial: 'ratings/rate', locals: {map: @map, rating: @current_rating}
+- else
+  %h5 Log in to rate this map!
+
 = link_to 'Edit', edit_map_path(@map)
 \|
 = link_to 'Back', maps_path

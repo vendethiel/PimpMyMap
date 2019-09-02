@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   resources :maps do
-    member do
-      post 'rate', to: 'ratings#create'
-    end
+    resources :ratings, only: [:create, :update]
   end
   devise_for :users
 

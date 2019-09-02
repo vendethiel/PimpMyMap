@@ -15,9 +15,10 @@
         %a.p-2.text-dark(href="#") List of maps
         %a.p-2.text-dark(href="#") List of maps
       - if current_user.present?
-        %a.btn.btn-outline-primary(href="#") Logout
+        %a.btn.btn-outline-primary(href="#") Logged in as #{current_user.display_name}
+        //%a.btn.btn-outline-primary(href="#") Logout
       - else
-        %a.btn.btn-outline-primary(href="#") Log in
+        %a.btn.btn-outline-primary(href=new_user_session_path) Log in
     = yield
     %footer.pt-4.my-md-5.pt-md-5.border-top
     = #javascript_include_tag "application"

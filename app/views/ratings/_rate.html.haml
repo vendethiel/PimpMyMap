@@ -1,0 +1,7 @@
+- if rating.present?
+  %h3 Your current rating: #{rating.positivity}
+  %h5 Want to update your rating?
+- else
+  %h3 Rate this map!
+
+= render partial: 'ratings/form', locals: {map: map, rating: rating}

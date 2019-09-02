@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_28_215925) do
+ActiveRecord::Schema.define(version: 2019_09_02_193337) do
 
   create_table "map_files", force: :cascade do |t|
     t.string "name"
@@ -35,8 +35,17 @@ ActiveRecord::Schema.define(version: 2019_08_28_215925) do
     t.index ["user_id"], name: "index_maps_on_user_id"
   end
 
-# Could not dump table "ratings" because of following StandardError
-#   Unknown type 'bool' for column 'positive'
+  create_table "ratings", force: :cascade do |t|
+    t.integer "map_id", null: false
+    t.integer "user_id", null: false
+    t.integer "score"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "positive"
+    t.string "comment"
+    t.index ["map_id"], name: "index_ratings_on_map_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
+  end
 
   create_table "screenshots", force: :cascade do |t|
     t.string "name"

@@ -10,6 +10,10 @@ class MapsController < ApplicationController
   # GET /maps/1
   def show
     @stats = @map.gather_stats
+
+    if user_signed_in?
+      @current_rating = Rating.find_by(user: current_user, map: @map)
+    end
   end
 
   # GET /maps/new
@@ -21,7 +25,7 @@ class MapsController < ApplicationController
   end
 
   # POST /maps
-  def create(map)
+  def create
     @map.user = current_user
     @map.latest = Time.now
     if @map.save

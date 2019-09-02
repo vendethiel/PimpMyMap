@@ -7,10 +7,10 @@ class Ability
     can :read, Map
 
     return unless user.present?
-    can :create, Rating
+    can :manage, Rating, { user: user }
 
     return unless user.mapper?
-    can :manage, Map, user: user
+    can :manage, Map, { user: user }
 
     return unless user.admin?
     can :manage, :all

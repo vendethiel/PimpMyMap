@@ -21,6 +21,6 @@ class User < ApplicationRecord
   end
 
   def can_rate?(map)
-    Rating.where(map: map, user: self).nil?
+    Rating.find_by(map: map, user: self).nil?
   end
 end
