@@ -3,7 +3,7 @@
 %h1= @map.name
 
 - if @map.image?
-  = image_tag(@map.image_url)
+  = @map.thumbnail # image_tag(@map.image_url)
 
 %p= @map.description
 
@@ -17,6 +17,7 @@
 %br
 %b Category: #{@map.category}
 
+= render partial: 'stats', locals: {stats: @map.gather_stats}
 
 - if user_signed_in?
   = render partial: 'ratings/rate', locals: {map: @map, rating: @current_rating}

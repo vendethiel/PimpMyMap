@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_02_193337) do
+ActiveRecord::Schema.define(version: 2019_09_02_195501) do
 
   create_table "map_files", force: :cascade do |t|
     t.string "name"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2019_09_02_193337) do
     t.boolean "positive"
     t.string "comment"
     t.index ["map_id"], name: "index_ratings_on_map_id"
+    t.index ["user_id", "map_id"], name: "index_ratings_on_user_id_and_map_id", unique: true
     t.index ["user_id"], name: "index_ratings_on_user_id"
   end
 

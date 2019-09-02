@@ -8,12 +8,12 @@ class Map < ApplicationRecord
 
   def gather_stats
     {
-      community_pos: Rating.positive.of_community,
-      community_neg: Rating.negative.of_community,
-      mapper_pos: Rating.positive.of_mappers,
-      mapper_neg: Rating.negative.of_mappers,
-      pro_pos: Rating.positive.of_pros,
-      pro_neg: Rating.negative.of_pros,
+      community_pos: Rating.positive.of_community.count,
+      community_neg: Rating.negative.of_community.count,
+      mapper_pos: Rating.positive.of_mappers.count,
+      mapper_neg: Rating.negative.of_mappers.count,
+      pro_pos: Rating.positive.of_pros.count,
+      pro_neg: Rating.negative.of_pros.count,
     }
   end
 end

@@ -1,6 +1,6 @@
 // since Ratings are "1 per map x user", always use "create"
 // the controller will make do...
-= simple_form_for([map, rating]) do |f|
+= simple_form_for([map, rating || Rating.new]) do |f|
   = f.input :positive
   = f.input :comment
   = f.submit "Save"
