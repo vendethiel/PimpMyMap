@@ -5,6 +5,11 @@ class MapsController < ApplicationController
 
   # GET /maps
   def index
+    @total = Map.count
+    if user_signed_in? && params[:only_unrated]
+      @maps = @maps.where_not_exists(:ratings, {user: current_user})
+    end
+    @maps = @maps.page(params[:page])
   end
 
   # GET /maps/1

@@ -8,6 +8,7 @@ gem 'cancancan'
 gem 'devise'
 gem 'simple_form'
 gem 'will_paginate'
+gem 'where_exists' # XXX consider activerecord_where_assoc
 gem 'carrierwave'
 gem 'action_args'
 gem 'active_decorator'

@@ -1,22 +1,39 @@
 .px-3.py-3.pt-md-5.pb-md-4.mx-auto.text-center
   %h3.display-4 List of Maps
-  %p.lead 
-    %span.badge.badge-secondary 137
+  %p.lead
+    - if user_signed_in? && params[:only_unrated]
+      %span.badge.badge-secondary= @maps.size
+      out of
+    %span.badge.badge-secondary= @total
     maps in total
 
-%span.text-muted
-  List of Maps
-  %spanjustify-content-between.lh-condensed 137 
-%h5= link_to 'New Map', new_map_path
+- if can? :create, Map
+  %h5= link_to 'New Map', new_map_path
+
+- if user_signed_in?
+  - if params[:only_unrated]
+    %h5 Only showing maps you haven't rated yet
+    Click
+    %b
+      %a(href=root_path) here
+    to only see all the maps you haven't rated yet!
+  - else
+    %h5 Showing all maps.
+    Click
+    %b
+      %a{href: root_path(only_unrated: true)} here
+    to only see maps you haven't rated yet!
+
+= will_paginate @maps, params: params.slice(:only_unrated)
 
 - @maps.each do |map|
+  %span(style="float: left; /* XXX REMOVE THIS */")= map.thumbnail
   %h3.my-0= link_to map.name, map
   %small.text-muted= map.description
-  = map.thumbnail
-  .text-muted Size: #{map.size}
-  .text-muted Mode: #{map.mode}
-  .text-muted Last updated: #{map.latest}
-  .text-muted Author: #{map.user.try(:name)}
-  .text-muted Category: #{map.category}
-  - if can? :manage, map
-    .text-muted= link_to 'Edit', map
+  -#.text-muted Size: #{map.size}
+  -#.text-muted Mode: #{map.mode}
+  -#.text-muted Last updated: #{map.latest}
+  -#.text-muted Author: #{map.user.try(:name)}
+  -#.text-muted Category: #{map.category}
+  -#- if can? :manage, map
+  -#  .text-muted= link_to 'Edit', map
