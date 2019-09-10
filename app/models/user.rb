@@ -13,7 +13,7 @@ class User < ApplicationRecord
   end
 
   def mapper?
-    id == 2
+    true
   end
 
   def pro?

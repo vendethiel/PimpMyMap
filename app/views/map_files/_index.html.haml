@@ -1,0 +1,8 @@
+- if can? :create, map => MapFile
+  = render partial: 'map_files/form', locals: {map: map, file: MapFile.new}
+- if files.size > 0
+  %h5 This map has #{files.size} attached
+  %ul
+    - files.each do |file|
+      %b= file.name
+      // TODO :destroy

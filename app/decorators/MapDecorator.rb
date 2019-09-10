@@ -9,7 +9,7 @@ module MapDecorator
 
   def thumbnail
     if image.present?
-      image_tag image_url(:thumb)
+      link_to image_tag(image_url(:thumb)), image_url
     end
   end
 end

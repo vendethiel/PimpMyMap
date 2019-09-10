@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :maps do
     resources :ratings, only: [:create, :update]
+    resources :map_files, only: [:create, :update, :destroy]
+    resources :screenshots, only: [:create, :update, :destroy]
   end
   devise_for :users
 

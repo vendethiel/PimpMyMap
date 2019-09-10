@@ -7,12 +7,19 @@ class Ability
     can :read, Map
 
     return unless user.present?
-    can :manage, Rating, { user: user }
+    by_me = {user: user}
+
+    can :manage, Rating, by_me
 
     return unless user.mapper?
-    can :manage, Map, { user: user }
+
+    can :create, Map
+    can :update, Map, by_me
+    can :manage, MapFile, { map: by_me }
+    can :manage, Screenshot, { map: by_me }
 
     return unless user.admin?
+
     can :manage, :all
   end
 end

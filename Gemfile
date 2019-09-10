@@ -9,6 +9,7 @@ gem 'devise'
 gem 'simple_form'
 gem 'will_paginate'
 gem 'where_exists' # XXX consider activerecord_where_assoc
+gem 'kawaii_validation'
 gem 'carrierwave'
 gem 'action_args'
 gem 'active_decorator'
@@ -66,5 +67,5 @@ group :test do
   gem 'webdrivers'
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+# Windows does not include zoneinfo map_files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

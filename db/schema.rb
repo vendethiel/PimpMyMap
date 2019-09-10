@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_02_195501) do
+ActiveRecord::Schema.define(version: 2019_09_10_215842) do
 
   create_table "map_files", force: :cascade do |t|
     t.string "name"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2019_09_02_195501) do
     t.string "file"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "map_id", null: false
   end
 
   create_table "maps", force: :cascade do |t|
@@ -25,12 +26,12 @@ ActiveRecord::Schema.define(version: 2019_09_02_195501) do
     t.string "description"
     t.integer "user_id", null: false
     t.string "size"
-    t.date "latest"
     t.integer "mode"
     t.integer "category"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "image"
+    t.text "version"
     t.index ["name"], name: "index_maps_on_name", unique: true
     t.index ["user_id"], name: "index_maps_on_user_id"
   end
@@ -54,6 +55,7 @@ ActiveRecord::Schema.define(version: 2019_09_02_195501) do
     t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "map_id", null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -3,13 +3,13 @@
 %h1= @map.name
 
 - if @map.image?
-  = @map.thumbnail # image_tag(@map.image_url)
+  = @map.thumbnail #
 
 %p= @map.description
 
 %b Author: #{@map.author_name}
 %br
-%b Latest version: #{@map.latest}
+%b Latest version: #{@map.version}
 %br
 %b Size: #{@map.size}
 %br
@@ -17,13 +17,18 @@
 %br
 %b Category: #{@map.category}
 
+= render partial: 'screenshots/index', locals: {map: @map, screenshots: @map.screenshots}
+
+= render partial: 'map_files/index', locals: {map: @map, files: @map.map_files}
+
 = render partial: 'stats', locals: {stats: @map.gather_stats}
 
-- if user_signed_in?
+- if @current_rating.present? ? can?(:update, @current_rating) : can?(:create, @map.ratings.build)
   = render partial: 'ratings/rate', locals: {map: @map, rating: @current_rating}
 - else
   %h5 Log in to rate this map!
 
-= link_to 'Edit', edit_map_path(@map)
-\|
+- if can? :update, @map
+  = link_to 'Edit', edit_map_path(@map)
+  \|
 = link_to 'Back', maps_path

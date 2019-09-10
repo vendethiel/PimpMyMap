@@ -1,10 +1,16 @@
 class Map < ApplicationRecord
   belongs_to :user
   has_many :ratings
-
-  mount_uploader :image, MapImageUploader
   has_many :screenshots
   has_many :map_files
+
+  mount_uploader :image, MapImageUploader
+
+  validates :version do
+    presence
+    format with: /\Av?[1-9]\d+(\.\d+){0,3}\z/
+    length maximum: 100
+  end
 
   def gather_stats
     {
