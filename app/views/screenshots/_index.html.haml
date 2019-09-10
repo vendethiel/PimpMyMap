@@ -3,6 +3,5 @@
 - if screenshots.size > 0
   %h5 This map has {screenshots.size} attached
   - screenshots.each do |screenshot|
-    - if screenshot.image.present?
-      = image_tag screenshot.image_url
+    = thumbnail
     // TODO :destroy
