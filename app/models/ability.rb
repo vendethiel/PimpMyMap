@@ -5,6 +5,7 @@ class Ability
 
   def initialize(user)
     can :read, Map
+    can :download, MapFile
 
     return unless user.present?
     by_me = {user: user}

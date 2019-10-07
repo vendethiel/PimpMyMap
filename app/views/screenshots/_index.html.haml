@@ -1,7 +1,7 @@
 - if can? :create, @map => Screenshot
   = render partial: 'screenshots/form', locals: {map: map, screenshot: Screenshot.new}
 - if screenshots.size > 0
-  %h5 This map has {screenshots.size} attached
+  %h5 This map has #{screenshots.size} screenshot(s) attached
   - screenshots.each do |screenshot|
-    = thumbnail
+    = screenshot.thumbnail
     // TODO :destroy
