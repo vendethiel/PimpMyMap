@@ -1,0 +1,5 @@
+- if map.has_links
+  %ul
+    - for region in %w(us kr na tw)
+      - if map.link_for(region)
+        %li= link_to map.link_for(region), region.upcase

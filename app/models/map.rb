@@ -6,9 +6,21 @@ class Map < ApplicationRecord
 
   mount_uploader :image, MapImageUploader
 
+  def link_for(region)
+    (self.links ||= {})[region.to_sym]
+  end
+
+  def link_for=(region, url)
+    (self.links ||= {})[region.to_sym] = url
+  end
+
+  def has_links
+    self.links && !self.links.empty?
+  end
+
   validates :version do
     presence
-    format with: /\Av?[1-9]\d+(\.\d+){0,3}\z/
+    format with: /\Av?[1-9]\d*(\.\d+){0,2}\z/
     length maximum: 100
   end
 

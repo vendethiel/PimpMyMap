@@ -17,6 +17,8 @@
 %br
 %b Category: #{@map.category}
 
+= render partial: 'regions', locals: {map: @map}
+
 = render partial: 'screenshots/index', locals: {map: @map, screenshots: @map.screenshots}
 
 = render partial: 'map_files/index', locals: {map: @map, files: @map.map_files}
